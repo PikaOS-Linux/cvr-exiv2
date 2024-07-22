@@ -1,0 +1,4 @@
+version=4
+
+opts="repacksuffix=+dfsg, dversionmangle=auto, filenamemangle=s/.+\/v?([\d\.]+)\.tar\.gz/exiv2-$1\.tar\.gz/" \
+  https://github.com/Exiv2/exiv2/tags .*/v?([\d\.]+)\.tar\.gz

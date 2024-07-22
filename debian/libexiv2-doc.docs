@@ -1,0 +1,3 @@
+doc/*.txt
+doc/include
+usr/share/doc/exiv2/html

@@ -1,0 +1,4 @@
+usr/include/exiv2/*
+usr/lib/*/cmake/exiv2/*.cmake
+usr/lib/*/libexiv2.so
+usr/lib/*/pkgconfig/exiv2.pc

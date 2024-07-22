@@ -1,0 +1,33 @@
+Author: Pino Toscano <pino@debian.org>
+Description: Tweak AdditionOverflowInLoaderExifJpeg for 32bit unsigned char OSes
+ AdditionOverflowInLoaderExifJpeg expects an overflow to happen on 32bit
+ architectures; due to the way LoaderExifJpeg & StringValueBase work and the
+ test data is fabricated, the overflow happens only architectures with signed
+ char.
+ .
+ Tweak AdditionOverflowInLoaderExifJpeg to account for this, by not expecting an
+ overflow in case the architecture has unsigned char (e.g. ARM and POWER).
+ .
+ For more discussion and notes, see: https://github.com/Exiv2/exiv2/issues/933
+Last-Update: 2023-07-16
+Forwarded: not-needed
+
+--- a/tests/bugfixes/github/test_CVE_2018_12265.py
++++ b/tests/bugfixes/github/test_CVE_2018_12265.py
+@@ -1,5 +1,7 @@
+ # -*- coding: utf-8 -*-
+ 
++import platform
++
+ import system_tests
+ 
+ class AdditionOverflowInLoaderExifJpeg(metaclass=system_tests.CaseMeta):
+@@ -17,6 +19,6 @@ class AdditionOverflowInLoaderExifJpeg(m
+ Warning: Directory Image, entry 0x0201: Strip 0 is outside of the data area; ignored.
+ Warning: Directory Image, entry 0x0201: Strip 7 is outside of the data area; ignored.
+ """ +
+-        ("" if system_tests.BT.Config.is_64bit else "Uncaught exception: Overflow in addition\n")
++        ("" if system_tests.BT.Config.is_64bit or any(i for i in ["arm", "ppc"] if i in platform.uname().machine) else "Uncaught exception: Overflow in addition\n")
+     ]
+-    retval = [0 if system_tests.BT.Config.is_64bit else 1]
++    retval = [0 if system_tests.BT.Config.is_64bit or any(i for i in ["arm", "ppc"] if i in platform.uname().machine) else 1]

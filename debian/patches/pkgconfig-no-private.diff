@@ -1,0 +1,20 @@
+Author: Pino Toscano <pino@debian.org>
+Description: Remove private/static markers from the pkg-config file
+ The pkg-config file lists as as private the internal libraries used by exiv2.
+ The problem is that those private markers require the availability of those
+ other pkg-config files to make exiv2.pc usable; since those are needed only
+ for static linking, and that there are no static libraries, simply delete them
+ to make exiv2.pc usable again.
+Forwarded: no
+Last-Update: 2023-06-21
+
+--- a/cmake/exiv2.pc.in
++++ b/cmake/exiv2.pc.in
+@@ -7,7 +7,5 @@ Name: exiv2
+ Description: @PROJECT_DESCRIPTION@
+ Version: @PROJECT_VERSION@
+ URL: @PACKAGE_URL@
+-Requires.private: @requires_private_for_pc_file@
+ Libs: -L${libdir} -lexiv2
+-Libs.private: @libs_private_for_pc_file@
+ Cflags: -I${includedir}

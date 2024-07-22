@@ -1,0 +1,10 @@
+Document: exiv2-c++-api
+Title: Exiv2 - C++ API
+Author: Exiv2 developers
+Abstract: Exiv2 comprises of a C++ library and a command line utility to access
+ image metadata. This document the API in detail.
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/libexiv2-doc/html/index.html
+Files: /usr/share/doc/libexiv2-doc/html/*.html

@@ -1,0 +1,25 @@
+Author: Pino Toscano <pino@debian.org>
+Description: Remove private dependencies from the cmake config file
+ The cmake config file requires the private dependencies used by exiv2; since
+ those are needed only for static linking, and that there are no static
+ libraries, simply stop requiring them in the cmake config file.
+Forwarded: no
+Last-Update: 2023-11-15
+
+--- a/cmake/exiv2Config.cmake.in
++++ b/cmake/exiv2Config.cmake.in
+@@ -3,14 +3,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ include(CMakeFindDependencyMacro)
+ 
+-if(@EXIV2_ENABLE_PNG@) # if(EXIV2_ENABLE_PNG)
+-  find_dependency(ZLIB REQUIRED)
+-endif()
+-
+-if(@EXIV2_ENABLE_XMP@) # if(EXIV2_ENABLE_XMP)
+-  find_dependency(EXPAT REQUIRED)
+-endif()
+-
+ include("${CMAKE_CURRENT_LIST_DIR}/exiv2Export.cmake")
+ 
+ check_required_components(exiv2)
