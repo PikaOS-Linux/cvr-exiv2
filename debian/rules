@@ -33,6 +33,7 @@ override_dh_install:
 	dh_install
 	mkdir -p debian/libexiv2-data/usr/share/
 	cp -rv debian/qlogging-categories5 debian/libexiv2-data/usr/share/
+	rm -rfv debian/libexiv2-data/usr/share/locale/
 
 override_dh_installdocs:
 	dh_installdocs -A -Xcmd.txt -XMakefile -Xtemplates -XChangeLog
