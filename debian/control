@@ -76,6 +76,7 @@ Description: EXIF/IPTC/XMP metadata manipulation library
 Package: libexiv2-data
 Architecture: all
 Depends: ${misc:Depends}
+Provides: kwayland-data (= 4:5.115.0-2)
 Multi-Arch: foreign
 Description: EXIF/IPTC/XMP metadata manipulation library - shared data
  Exiv2 is a C++ library and a command line utility to manage image metadata.
