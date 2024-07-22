@@ -11,6 +11,7 @@ cd ./exiv2/
 apt-get build-dep ./ -y
 
 # Build package
+for i in ../patches/* ; do echo "Applying Patch: $i" && patch -Np1 -i $i || bash -c "echo "Applying Patch $i Failed!" && exit 2"; done
 LOGNAME=root dh_make --createorig -y -l -p exiv2_0.28.3 || echo "dh-make didn't go clean"
 dpkg-buildpackage --no-sign
 
