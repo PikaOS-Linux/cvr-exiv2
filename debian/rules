@@ -29,6 +29,11 @@ override_dh_auto_test:
 	# path conflicts between the tests
 	dh_auto_test --no-parallel
 
+override_dh_install:
+	dh_install
+	mkdir -p debian/libexiv2-data/usr/share/
+	cp -rv debian/qlogging-categories5 debian/libexiv2-data/usr/share/
+
 override_dh_installdocs:
 	dh_installdocs -A -Xcmd.txt -XMakefile -Xtemplates -XChangeLog
 	find $(CURDIR)/debian -name jquery.js -exec ln -sfv /usr/share/javascript/jquery/jquery.js {} \;
