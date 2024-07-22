@@ -11,7 +11,7 @@ cd ./exiv2/
 apt-get build-dep ./ -y
 
 # Build package
-LOGNAME=root dh_make --createorig -y -l -p exiv_0.28.3 || echo "dh-make didn't go clean"
+LOGNAME=root dh_make --createorig -y -l -p exiv2_0.28.3 || echo "dh-make didn't go clean"
 dpkg-buildpackage --no-sign
 
 # Move the debs to output
