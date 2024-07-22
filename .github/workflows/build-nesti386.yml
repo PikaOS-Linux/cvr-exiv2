@@ -1,4 +1,4 @@
-name: PikaOS Package Build Only (Canary)
+name: PikaOS Package Build Only (i386)
 
 on:
   workflow_dispatch
@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: self-hosted
     container:
-      image: ghcr.io/pikaos-linux/pikaos-builder:canaryv3
+      image: ghcr.io/pikaos-linux/pikaos-builder:nesti386
       volumes:
         - /proc:/proc
       options: --privileged -it
@@ -31,4 +31,4 @@ jobs:
         if_key_exists: replace
     
     - name: Build Package
-      run: ./main.sh
+      run: ./maini386.sh

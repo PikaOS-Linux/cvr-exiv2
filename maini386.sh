@@ -1,6 +1,8 @@
 #! /bin/bash
 
-DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND="noninteractive"
+export DEB_BUILD_OPTIONS="nocheck notest terse"
+export DPKG_GENSYMBOLS_CHECK_LEVEL=0
 
 # Clone Upstream
 git clone https://github.com/Exiv2/exiv2 -b v0.28.3
